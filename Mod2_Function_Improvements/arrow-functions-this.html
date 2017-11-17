@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arrow Functions</title>
+</head>
+<body>
+
+  <style>
+    .wrap {
+      min-height: 100vh;
+      display:flex;
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+      font-weight: 100;
+      color:white;
+    }
+    .box {
+      background:black url(https://unsplash.it/1500/1500?image=560&blur=0.5) center fixed no-repeat;
+      width:50px;
+      height:50px;
+      padding:50px;
+      transition: width 0.2s, height 0.6s;
+      position: relative;
+    }
+    .box.opening {
+      width:500px;
+      height:500px;
+    }
+    .box h2 {
+      position: absolute;
+      width:100%;
+      font-size: 100px;
+      transform:translateX(-200%);
+      transition: all 0.5s;
+      top:0;
+    }
+    .box p {
+      position: absolute;
+      width:100%;
+      transform:translateX(200%);
+      transition: all 0.5s;
+      bottom:0;
+    }
+    .box.open > * {
+      transform:translateX(0%);
+    }
+  </style>
+
+  <div class="wrap">
+    <div class="box">
+      <h2>Wes Bos</h2>
+      <p class="social">@wesbos</p>
+    </div>
+  </div>
+
+  <script>
+    const box = document.querySelector('.box');
+    /*an arrow function will not work here. With an arrow function the value of 'this' is not rebound inside of that function. In an arrow function the value of 'this' is inherited from the parent, and in this case that is the window object. As a result, 'this' will refer to the window object if the arrow function is used. But we want 'this' to refer to 'box', therefore a regular function is needed.*/
+    box.addEventListener('click', function() {
+        let first = 'opening';
+        let second = 'open'
+
+        //to close the box we must reverse the order of the procedure
+        //if it is already in an open state, then switch the order of what is executed first by switching the variables.
+        if(this.classlist.contains(first)){
+            [first, second] = [second, first]; // now first = open nad second = opening.
+        }
+
+        this.classlist.toggle(first); //when box is clicked it adds class of "opening"
+        setTimeout(() => {
+            this.classlist.toggle(second); //after 500ms it adds class of 'open'.
+            // an arrow function is used b/c the value of 'this' is inherited from parent
+        }, 500);
+    });
+
+  </script>
+
+</body>
+</html>

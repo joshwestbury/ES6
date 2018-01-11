@@ -29,18 +29,18 @@ With an arrow function the value of 'this' is not rebound inside of that functio
 
           //when you need to a method to bind to an object
 
-          const person = {
+          const person1 = {
               points: 23,
               //the 'score' function increments the socre every time it is called.
               //BUT we cannot use an arrow function on the 'score' method b/c 'this' is bound to the window NOT 'person'.
-              score: functoin () {
+              score: function () {
                   this.points++;
               }
-          }
+          };
 
           //an alternative but equivilant way of writing a method is seen below.
 
-          const person = {
+          const person2 = {
               points: 23,
               score() {
                   this.points++;
@@ -61,14 +61,14 @@ With an arrow function the value of 'this' is not rebound inside of that functio
           const beemer = new Car('bmw', 'blue');
           const subie = new Car('subaru', 'white');
 
-          car.prototype. summarize = function() => {
+          Car.prototype.summarize = function() {
               reutrn `this car is a ${this.make} in the colour ${this.colour}`;
           };
 
           //the arrow function will not work here because we need to use the 'this' keyword.
-          // car.prototype. summarize = () => {
-          //     reutrn `this car is a ${this.make} in the colour ${this.colour}`;
-          // };
+          Car.prototype.summarize = () => {
+              reutrn `this car is a ${this.make} in the colour ${this.colour}`;
+          };
 
 
           //_________________________________

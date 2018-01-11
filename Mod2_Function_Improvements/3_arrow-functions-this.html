@@ -5,7 +5,6 @@
   <title>Arrow Functions</title>
 </head>
 <body>
-
   <style>
     .wrap {
       min-height: 100vh;
@@ -64,18 +63,17 @@
 
         //to close the box we must reverse the order of the procedure
         //if it is already in an open state, then switch the order of what is executed first by switching the variables.
-        if(this.classlist.contains(first)){
+        if(this.classList.contains(first)){
             [first, second] = [second, first]; // now first = open nad second = opening.
         }
 
-        this.classlist.toggle(first); //when box is clicked it adds class of "opening"
+        this.classList.toggle(first); //when box is clicked it adds class of "opening"
         setTimeout(() => {
-            this.classlist.toggle(second); //after 500ms it adds class of 'open'.
+            this.classList.toggle(second); //after 500ms it adds class of 'open'.
             // an arrow function is used b/c the value of 'this' is inherited from parent
         }, 500);
     });
 
   </script>
-
 </body>
 </html>

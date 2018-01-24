@@ -33,39 +33,52 @@
 
   // Select all the list items on the page and convert to array
 
-  const items = document.querySelectorAll("li");
-  const arr = Array.from(items);
-  //console.log(arr);
-  
+  //MY ATTEMPT
+  // const items = document.querySelectorAll("li");
+  // const arr = Array.from(items);
+
+
+  //WES BOS
+  const items = Array.from(document.querySelectorAll('[data-time]'));
 
   // Filter for only the elements that contain the word 'flexbox'
 
-  const content = arr.map((text, i) => arr[i].textContent);
-  //console.log(content)
-  const flexbox = content.filter(flex => flex == "Flexbox Video");
-  //console.log(flexbox);
+  //MY ATTEMPT
+  // const content = arr.map((text, i) => arr[i].textContent);
+  // console.log(content)
+  // const flexbox = content.filter(flex => flex == "Flexbox Video");
+  
+
+  //WES BOS
+  const filtered = items.filter(item => item.textContent.includes('Flexbox'));
 
   // map down to a list of time strings
   
-  const times = arr.map((time, i) => arr[i].dataset.time);
-  //console.log(times);
+  //MY ATTEMPT
+  //const times = arr.map((time, i) => arr[i].dataset.time);
+  
+  //WES BOS
+  items.map(item => item.dataset.time);
 
   // map to an array of seconds
 
-  const secs = arr.map((sec, i) => arr[i].dataset.time.slice(2));
-  //console.log(secs);
+  //MY ATTEMPT
+  //const secs = arr.map((sec, i) => arr[i].dataset.time.slice(2));
+  
+  //WES BOS
+  items.map(timecode => {
+      const parts = timecode.split(':').map(part => parseFloat(part));
+      return (parts[0] * 60) + parts[1];
+    })
 
   // reduce to get total
 
-  const num = secs.map(sec => parseInt(sec));
-  console.log(num);
+  //MY ATTEMPT
+  //const num = secs.map(sec => parseInt(sec));
   
-  //const test = [1, 2, 3, 5];
-  const total = num.reduce((a, b) => {
-    return a + b,
-   }, 0); 
-  console.log(total);
-    
+  //WES BOS
+  items.reduce((runningTotal, seconds) => runningTotal + seconds);
+  
   
 
   // 🔥 This can also be done in a single .reduce(), but we're practicing arrow functions here, so chain them!

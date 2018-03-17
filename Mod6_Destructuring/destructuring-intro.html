@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Destructuring!</title>
+</head>
+<body>
+<script>
+// Destructuring allows us extract data from arrays, objects, maps, and sets and put the data into their own variables.
+// In other words, it allwos us to extract properties from an object or itesm from an array multiple at a time.
+  const person = {
+    first: 'Wes',
+    last: 'Bos',
+    country: 'Canada',
+    city: 'Hamilton',
+    twitter: '@wesbos'
+  };
+  //so instad of:
+    //const first = person.first;
+    //const last = person.last;
+
+  //you can write:
+  const { first, last, twitter } = person;
+  //this says: give me a variable called 'first', 'last', and 'twitter' and take those variables form the 'person' object.
+  console.log(first); //returns 'wes'
+
+  const wes = {
+    first: 'Wes',
+    last: 'Bos',
+    links: {
+      social: {
+        twitter: 'https://twitter.com/wesbos',
+        facebook: 'https://facebook.com/wesbos.developer',
+      },
+      web: {
+        blog: 'https://wesbos.com'
+      }
+    }
+  };
+
+  const { twitter, facebook } = wes.links.social;
+  console.log(twitter); //returns 'https://twitter.com/wesbos'
+    //NOTE: SINCE I'VE ALREADY USED THE VARIABLE NAME 'TWITTER' ON LINE 23, I GET AN ERROR. BUT...
+    //THIS IS SOLVED BY KEEPING THE PROPERTY BUT RENAMING THE VARIABLES VIA DESTRUCTURING.
+    //LIKE THIS:
+
+  const { twitter: tweet, facebook: fb } = wes.links.social;
+  //This says, I want the 'twitter' property but I want to call it 'tweet'.
+  //I want the 'facebook' property, but I want to call it 'fb'
+
+
+  //SETTING DEFAULTS VIA DESTRUCTURING
+
+  const settings = { width: 300, color: 'black' }  // height, fontSize
+  const { width = 100, height = 100, color = 'blue', fontSize = 25} = settings;
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

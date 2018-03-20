@@ -8,14 +8,20 @@
 <script>
   const details = ['Wes Bos', 123, 'wesbos.com'];
   const [name, id, website] = details;
-  console.log(name, id, website);
+  console.log(name, id, website); //returns: 'Wes Bos', 123, 'wesbos.com'
 
   const data = 'Basketball,Sports,90210,23,wes,bos,cool';
   const [itemName, category, sku, inventory] = data.split(',');
+  //creates an array vai .split()
+  //then immediatly destructures the array into 4 variables.
+
 
   const team = ['Wes', 'Harry', 'Sarah', 'Keegan', 'Riker'];
 
   const [captain, assistant, ...players] = team;
+  //the rest operator (...) allows you to assign multiple items to a single variable
+  //In this case 'Sarah', 'Keegan', and 'Riker' are assigned to 'players'
+      //NOTE: the rest operator looks exactly like the spread operator.
 
 </script>
 </body>

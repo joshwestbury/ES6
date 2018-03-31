@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Iterables & Looping</title>
+</head>
+<body>
+
+<script>
+
+  //you cannot iterate over an object. An ojbect is not an iterable.
+  const apple = {
+    color: 'Red',
+    size: 'Medium',
+    weight: 50,
+    sugar: 10
+  };
+
+  for (const prop in apple) {
+    const value = apple[prop];
+    console.log(value, prop);
+  }
+
+</script>
+</body>
+</html>

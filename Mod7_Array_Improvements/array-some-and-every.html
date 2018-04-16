@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array .some() and .every()</title>
+</head>
+<body>
+<script>
+
+  //.some() checks the items in the array to see if SOME of the itemms are what you are looking for.
+    //returns a boolean
+  const ages = [32, 15, 19, 12];
+
+  // 👵👨 is there at least one adult in the group?
+  const adultPresent = ages.some(age => age >= 18);
+  console.log(adultPresent); //returns true
+
+  //.every() checks the items in the array to see if EVERY item is what you are looking for.
+    //returns a boolean
+
+  // 🍻 is everyone old enough to drink?
+  const allOldEnough = ages.every(age => age >= 19);
+  console.log(allOldEnough); //returns false
+
+
+</script>
+</body>
+</html>

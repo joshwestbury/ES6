@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array .from() and .of()</title>
+</head>
+  <div class="people">
+    <p>Wes</p>
+    <p>Kait</p>
+    <p>Snickers</p>
+  </div>
+<body>
+<script>
+
+  //Array.of takes someting that is array-ish and turns it into a true array. This comes into play often when working with DOM elements.
+
+  const people = document.querySelectorAll('.people p');
+  //console.log(people)  // this returns a NodeList, which is not an array but is array-ish
+  //const peopleArray = Array.from(people)  // this returns an array
+
+  //const names = people.map(person => person.textContent) // returns the text of each <p>.
+
+  //you can do this in one line like this:
+  const peopleArray = Array.from(people, person => {
+    console.log(person);
+    return person.textContent; //returns the person's name
+  });
+  console.log(peopleArray);
+
+
+  //another use case: convert arguments object into an array.
+    //arguments is not an array. It is array-ish.
+  function sumAll() {
+    const nums = Array.from(arguments);
+    return nums.reduce((prev, next) => prev + next, 0);
+  }
+
+  sumAll(2, 34, 23, 234, 234, 234234, 234234, 2342);
+
+
+  //Array.of creates an array of every single argument that you pass it.
+  const ages = Array.of(12,4,23,62,34);
+  console.log(ages); // returns [12,4,23,62,34]
+
+</script>
+</body>
+</html>

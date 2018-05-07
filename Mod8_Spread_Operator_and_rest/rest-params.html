@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The ...Rest Param</title>
+</head>
+<body>
+<script>
+  // function convertCurrency(rate, ...amounts) { //think of rest param as the rest of the amounts.
+  //   console.log(rate, amounts); returns 1.54 [10, 23, 52, 1, 56] // note amounts is an array.
+  //   return amounts.map(amount => amount * rate);
+  // }
+
+  // const amounts = convertCurrency(1.54, 10, 23, 52, 1, 56);
+  // console.log(amounts);
+
+    //destructuring with Rest Param.
+  const runner = ['Wes Bos', 123, 5.5, 5, 3, 6, 35];
+  const [name, id, ...runs] = runner;
+  console.log(name, id, runs);
+
+  const team = ['Wes', 'Kait', 'Lux', 'Sheena', 'Kelly'];
+  const [captain, assistant, ...players] = team;
+  console.log(captain, assistant, players)
+
+</script>
+</body>
+</html>

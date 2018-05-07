@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The ...Spread Operator</title>
+</head>
+<body>
+<script>
+
+  const featured = ['Deep Dish', 'Pepperoni', 'Hawaiian'];
+  const specialty = ['Meatzza', 'Spicy Mama', 'Margherita'];
+  const combineArrays = [...featured, ...specialty];
+  //returns one array with all pizzas in featured and specialty
+
+
+  const pizzas = [...featured, 'veg', ...specialty];
+  //same as combineArrays except that 'veg' is added in the middle.
+
+  const fridayPizzas = [...pizzas];
+  //this makes a copy of pizzas and assigns copy to fridayPizzas without destroying pizzas array.
+
+  const deepDish = {
+    pizzaName: 'Deep Dish',
+    size: 'Medium',
+    ingredients: ['Marinara', 'Italian Sausage', 'Dough', 'Cheese']
+  };
+
+</script>
+</body>
+</html>

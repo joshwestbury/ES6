@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chaining Promises</title>
+</head>
+<body>
+<script>
+
+  //In this example we fire off two promise at the same time and resolve the data when the data returns with Promise.all.
+    //In this first example we use setTimeout to simulate real data retrieval. In the second example we use real data.
+
+  // const weather = new Promise((resolve) => {
+  //   setTimeout(() => {
+  //     resolve({ temp: 29, conditions: 'Sunny with Clouds'});
+  //   }, 2000);
+  // });
+
+  // const tweets = new Promise((resolve) => {
+  //   setTimeout(() => {
+  //     resolve(['I like cake', 'BBQ is good too!']);
+  //   }, 500);
+  // });
+
+  // Promise
+  //   .all([weather, tweets])
+  //   .then(responses => {
+  //     //console.log(responses);
+  //     const [weatherInfo, tweetInfo] = responses; //destructure to put each data reponse in its own variable.
+  //     console.log(weatherInfo, tweetInfo)
+  //   });
+
+  //----------------------------------------------
+
+    // Note: you cannot run fetch() through browser console. You must run it throug a server for it to actually work.
+      //You can use browser sync server to start up a local server that allows you to play with real data. npm -g browsersync
+  const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
+  const streetCarsPromise = fetch('http://data.ratp.fr/api/datasets/1.0/search/?q=paris');
+
+  Promise
+    .all([postsPromise, streetCarsPromise]) // this returns a readable stream that must be converted into JSON.
+    .then(responses => {
+      return Promise.all(responses.map(res => res.json())) //call Promise.all again and map over each data set and convert to JSON
+    })
+    .then(responses => {
+      console.log(responses);
+    });
+
+</script>
+</body>
+</html>

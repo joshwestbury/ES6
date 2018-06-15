@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Promises!</title>
+</head>
+<body>
+<script>
+  //fetch returns a promise. In other words, postsPromise does not contain the data from fetch('http://wesbos.com/wp-json/wp/v2/posts'),
+    //but rather it contains a promise
+const postsPromise = fetch('http://wesbos.com/wp-json/wp/v2/posts');
+
+  //In order to get the data from fetch('http://wesbos.com/wp-json/wp/v2/posts') we must handle the promise with .then()
+    //the .then() will only run when the data comes back.
+postsPromise
+  .then(data => data.json())
+  .then(data => { console.log(data) })
+  .catch((err) => {
+    console.error(err);
+  })
+
+</script>
+</body>
+</html>

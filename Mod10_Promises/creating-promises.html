@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Creating Promises!</title>
+</head>
+<body>
+<script>
+    //To create a promise:
+      //first: create a variable
+      //second: implement the Promise constructor, which  takes two parameter: resolve & reject
+      //third: resolve the promise and handle the promise with .then()
+      //fourth: reject the promise and catch any errors with .catch()
+  const p = new Promise((resolve, reject) => {
+    //resolve('Josh is cool');
+
+    setTimeout(() => {
+      resolve('Josh is cool');
+      reject(Error('Err josh isn\'t cool'));
+    }, 5000);
+  });
+
+  p
+    .then(data => {
+      console.log(data);
+    })
+    .catch(err => {
+      console.error(err);
+    });
+
+</script>
+</body>
+</html>

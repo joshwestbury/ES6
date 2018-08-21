@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Extending Classes</title>
+</head>
+<body>
+<script>
+  class Animal {
+    constructor(name) {
+      this.name = name;
+      this.thirst = 100;
+      this.belly = [];
+    }
+    drink() {
+      this.thirst -= 10;
+      return this.thirst;
+    }
+    eat(food) {
+      this.belly.push(food);
+      return this.belly;
+    }
+    
+  }
+
+  class Dog extends Animal { // by extending Animal, all methods on Animal are available to Dog.
+    constructor(name, breed) {
+      //we must first creat an Animal before we can extend Dog. We do this with super(). This is the same as calling Animal()
+      super(name); //since the Animal constructor takes an argument 'name' we must pass that to super(name);
+      this.breed = breed;
+    }
+    bark() {
+      console.log('Bark bark I\'m a dog');
+    }
+
+    // a static method is not inherited by all instances and therefore can ony be called on Animal directly (e.g. Animal.info())
+    static info() {
+      console.log('a dog is better than a cat')
+    }
+
+    // this is a getter. It's not a method but a property on the class. 
+    get description() {
+      return `${this.name} is a ${this.breed} type of dog`
+    }
+
+    // this is a setter. Again, like getter it is not a method but a property. 
+      // this is used to set the nickname like this: snickers.nicknames = '    snicky    ' 
+        // the spaces will be trimed when the getter is called
+    set nicknames(value) {
+      this.nick = value.trim();
+    }
+
+    // now we call the getter like this: snickers.nicknames
+      // --> 'snicky' (whitespace is removed)
+    get nicknames() {
+      return this.nick
+    }
+
+  }
+
+  const rhino = new Animal('Rhiney');
+  const snickers = new Dog('Snickers', 'King Charles');
+
+</script>
+</body>
+</html>

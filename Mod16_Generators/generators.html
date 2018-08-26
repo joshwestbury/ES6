@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generators</title>
+</head>
+<body>
+<script>
+
+  // assign generator function to variable then call the function with next().
+    // people.next() --> 0
+    // people.next() --> 1 
+
+  // each time you call the function it returns each subsequent yeild statement. 
+
+  function* listPeople() {
+    let nane1 = 0;
+    yield i;
+    i++;
+    yield i;
+    i++;
+    yield i;
+  }
+
+  const people = listPeople();
+
+  
+  //  here we demonstrate that we can return a yield only once within a for loop. Each time we call inventorGen.next() we will
+    // get a new inventor.
+
+  const inventors = [
+    { first: 'Albert', last: 'Einstein', year: 1879 },
+    { first: 'Isaac', last: 'Newton', year: 1643 },
+    { first: 'Galileo', last: 'Galilei', year: 1564 },
+    { first: 'Marie', last: 'Curie', year: 1867 },
+    { first: 'Johannes', last: 'Kepler', year: 1571 },
+    { first: 'Nicolaus', last: 'Copernicus', year: 1473 },
+    { first: 'Max', last: 'Planck', year: 1858 },
+  ];
+
+  function* loop(arr) {
+    console.log(inventors);
+    for (const item of arr) {
+      yield item;
+    }
+  }
+
+   const inventorGen = loop(inventors);
+
+   //NOTE: we can also call inventorGen.next().value to just get the value.
+
+
+</script>
+</body>
+</html>

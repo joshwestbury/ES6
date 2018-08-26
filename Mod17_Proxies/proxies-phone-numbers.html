@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proxies!</title>
+</head>
+<body>
+<script>
+
+  // create phoneHandler that creates trapping of get and set methods
+
+  const phoneHandler = {
+    set(target, name, value) {
+      target[name] = value.match(/[0-9]/g).join('');
+    },
+    get(target, name) {
+      return target[name].replace(/(\d{3})(\d{3})(\d{4})/, '($1)-$2-$3');
+    }
+  }
+
+  const phoneNumbers = new Proxy({}, phoneHandler); // start with empty {} b/c there are not phone numbers to start
+</script>
+</body>
+</html>

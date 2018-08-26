@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Proxies!</title>
+</head>
+<body>
+<script>
+
+  // proxies allow you to overwright the default behavior of an opperation on an object
+
+  const person = { name: 'Wes', age: 100 };
+  const personProxy = new Proxy(person, { // a proxie takes two arguments, 1. the target, 2. the handler (where you specify all of the opperations you wish to rewright)
+    get(target, name) {
+      // console.log('someone is asking for ', target, name);
+      return target[name].toUpperCase();
+    },
+    set(target, name, value) {
+      if(typeof value === 'string') {
+        target[name] = value.trim().toUpperCase() + '✂️';
+      }
+    }
+  });
+
+  personProxy.name = 'Wesley';
+</script>
+</body>
+</html>

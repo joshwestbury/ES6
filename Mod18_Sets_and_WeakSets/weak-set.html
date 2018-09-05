@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Brunch with Sets</title>
+</head>
+<body>
+<script>
+  let dog1 = { name: 'Snickers', age: 3 };
+  let dog2 = { name: 'sunny', age: 1 };
+
+
+  // you create a WeakSet just like a Set 
+    // and you can pass it an iterable of items
+
+  // BUT unlike Sets, a WeakSet can only ever contain objects
+    // you cannot iterate over a WeakSet
+    // there is no .clear() method on WeakSets
+  const weakSauce = new WeakSet([dog1, dog2]);
+
+    // rewatch video for wes's explanation of WeakSets and memory leaks
+  console.log(weakSauce);
+  dog1 = null;
+  console.log(weakSauce);
+
+</script>
+</body>
+</html>
